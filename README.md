@@ -12,7 +12,7 @@ Our tech stack will include the following:
 - **PostgreSQL** as our database of choice
 - **Python3** and **Flask** as our server language and server framework
 - **Flask-Migrate** for creating and running schema migrations
-- **HTML**, **CSS**, and **Javascript** with **Bootstrap3**for our website's frontend
+- **HTML**, **CSS**, and **Javascript** with **Bootstrap3** for our website's frontend
 
 > **Note** - If I do not mention the specific version of a package, then the default latest stable package will be installed.
 
