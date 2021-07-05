@@ -8,11 +8,11 @@ Kyria is a musical venue and artist booking site that facilitates the discovery 
 
 Our tech stack will include the following:
 
-- [SQLAlchemy] ORM to be our ORM library of choice
-- [PostgreSQ]L as our database of choice
-- [Python3] and [Flask] as our server language and server framework
-- [Flask-Migrate] for creating and running schema migrations
-- [HTML], [CSS], and [Javascript] with [Bootstrap3]for our website's frontend
+- **SQLAlchemy** ORM to be our ORM library of choice
+- **PostgreSQL** as our database of choice
+- **Python3** and **Flask** as our server language and server framework
+- **Flask-Migrate** for creating and running schema migrations
+- **HTML**, **CSS**, and **Javascript** with **Bootstrap3**for our website's frontend
 
 > **Note** - If I do not mention the specific version of a package, then the default latest stable package will be installed.
 
