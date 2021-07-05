@@ -7,7 +7,6 @@ import json
 
 from flask.globals import session
 
-
 import dateutil.parser
 from sqlalchemy.sql.expression import false, true
 import babel
@@ -20,7 +19,6 @@ from flask_wtf import Form
 from forms import *
 from flask_migrate import Migrate
 from sqlalchemy import func
-#from flask_migrate import Migrate
 
 #----------------------------------------------------------------------------#
 # App Config.
@@ -33,7 +31,6 @@ db = SQLAlchemy(app)
 migrate = Migrate(app, db)
 
 
-# TODO: connect to a local postgresql database
 
 #----------------------------------------------------------------------------#
 # Models.
@@ -338,21 +335,28 @@ def edit_artist(artist_id):
 def edit_artist_submission(artist_id):
   
   error = False
-  artist = Artist.query.get(artist_id)
+  try:
+    artist = Artist.query.get(artist_id)
 
-  #if not venue:
-  artist.name = request.form.get("name","")
-  artist.genres = request.form.get("genres","genres")
-  artist.city = request.form.get("city","")
-  artist.state = request.form.get("state","")
-  artist.phone = request.form.get("phone","")
-  artist.image_link = request.form.get("image_link","")
-  artist.facebook_link = request.form.get("facebook_link","")
-  artist.website = request.form.get("website","")
-  artist.seeking_venue = request.form.get("seeking_venue","")
-  artist.seeking_description = request.form.get("seeking_description","")
- 
-  db.session.commit()
+    #if not venue:
+    artist.name = request.form.get("name","")
+    artist.genres = request.form.get("genres","genres")
+    artist.city = request.form.get("city","")
+    artist.state = request.form.get("state","")
+    artist.phone = request.form.get("phone","")
+    artist.image_link = request.form.get("image_link","")
+    artist.facebook_link = request.form.get("facebook_link","")
+    artist.website = request.form.get("website","")
+    artist.seeking_venue = request.form.get("seeking_venue","")
+    artist.seeking_description = request.form.get("seeking_description","")
+  
+    db.session.commit()
+  except:
+    error = True
+    db.session.rollback()
+
+  finally:
+    db.session.close()
 
   return redirect(url_for('show_artist', artist_id=artist_id))
 
@@ -379,6 +383,7 @@ def edit_venue(venue_id):
 def edit_venue_submission(venue_id):
 
   error = False
+  
   venue = Venue.query.get(venue_id)
 
   #if not venue:
